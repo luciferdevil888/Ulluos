@@ -1,3 +1,4 @@
+from ai.gemini import ask_gemini
 from phone.open_app import open_app
 from skills.battery_skill import get_battery
 from memory.memory import save_memory, read_memory
@@ -50,7 +51,4 @@ def reply(user):
         return open_app(app)
 
     else:
-        return (
-            "Mujhe abhi iska jawab nahi pata. "
-            "Lekin main roz aur intelligent banti ja rahi hoon. 🦉"
-        )
+        return ask_gemini(user)
