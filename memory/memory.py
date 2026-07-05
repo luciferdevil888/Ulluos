@@ -13,3 +13,9 @@ def read_memory():
             return "Mujhe abhi kuch yaad nahi hai."
     except FileNotFoundError:
         return "Mujhe abhi kuch yaad nahi hai."
+
+def last_memory():
+    data = read_memory()
+    if data == "Mujhe abhi kuch yaad nahi hai.":
+        return ""
+    return data.split("\n")[-1]

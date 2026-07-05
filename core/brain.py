@@ -1,51 +1,56 @@
+from phone.open_app import open_app
+from skills.battery_skill import get_battery
 from memory.memory import save_memory, read_memory
 from skills.time_skill import get_time
 from skills.date_skill import get_date
 from skills.calculator_skill import calculate
-from skills.time_skill import get_time
-from skills.date_skill import get_date
-from memory.memory import save_memory, read_memory
-from skills.time_skill import get_time
-from memory.memory import save_memory, read_memory
+import os
+
 
 def reply(user):
-    user = user.lower().strip()
+    text = user.lower().strip()
 
-    if user == "hello":
+    if text == "hello":
         return "Hello Lavibaby! ❤️"
 
-    elif user == "hi":
-        return "Hi Lavibaby!"
+    elif text == "hi":
+        return "Hi Lavibaby! ❤️"
 
-    elif user == "kaise ho":
-        return "Main bilkul theek hoon."
+    elif text == "time":
+        return get_time()
 
-    elif user == "tum kon ho":
-        return "Main Ullu AI hoon. Tumhari personal AI assistant."
+    elif text == "date":
+        return get_date()
 
-    elif user == "owner":
-        return "Mere owner Lavibaby hain."
+    elif text == "battery":
+        return get_battery()
 
-    elif user == "time":
-        return "Abhi ka time hai " + get_time()
+    elif text.startswith("calculate "):
+        expression = user[10:]
+        return calculate(expression)
 
-    elif user == "date":
-        return "Aaj ki date hai " + get_date()
-
-    elif user.startswith("remember "):
-        text = user.replace("remember ", "")
-        save_memory(text)
+    elif text.startswith("remember "):
+        memory = user[9:]
+        save_memory(memory)
         return "Theek hai, maine yaad rakh liya."
 
-    elif user == "what do you remember":
+    elif text == "what do you remember":
         return read_memory()
 
-    elif user == "bye":
-        return "Bye Lavibaby! Jaldi milte hain."
+    elif text == "torch on":
+        os.system("termux-torch on")
+        return "Torch on kar di."
 
-    elif user.startswith("calculate "):
-        expression = user.replace("calculate ", "")
-        return "Answer: " + calculate(expression)
+    elif text == "torch off":
+        os.system("termux-torch off")
+        return "Torch off kar di."
+
+    elif text.startswith("open "):
+        app = text[5:]
+        return open_app(app)
 
     else:
-        return "Mujhe abhi ye command nahi aati."
+        return (
+            "Mujhe abhi iska jawab nahi pata. "
+            "Lekin main roz aur intelligent banti ja rahi hoon. 🦉"
+        )
