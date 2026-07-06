@@ -1,8 +1,6 @@
 import os
 
-
-def open_camera():
-    os.system(
-        "am start -n com.motorola.camera3/com.motorola.camera.Camera"
-    )
-    return "Camera open kar rahi hoon."
+def take_photo():
+    path = "/sdcard/UlluAI_Photo.jpg"
+    os.system(f"termux-camera-photo -c 0 {path}")
+    return f"Photo le li hai. {path} me save kar di."

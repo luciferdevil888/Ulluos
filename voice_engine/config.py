@@ -1,0 +1,11 @@
+WAKE_WORD = "hey ullu"
+
+VOICE_NAME = "Ullu"
+
+VOICE_GENDER = "female"
+
+LISTEN_TIMEOUT = 5
+
+STANDBY_TIMEOUT = 30
+
+LANGUAGE = "en-IN"

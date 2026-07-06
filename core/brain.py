@@ -1,4 +1,4 @@
-from skills.camera import open_camera
+from skills.camera import take_photo
 from skills.media import play_pause, pause, stop, info
 from skills.volume import volume_up, volume_down, volume_half, volume_mute
 from skills.browser import open_website, google_search
@@ -176,6 +176,20 @@ def reply(user):
 
     elif text.startswith("watch "):
         return youtube_search(user[6:])
+
+    # ---------------- Camera ----------------
+
+    elif "take photo" in text:
+        from skills.camera import take_photo
+        return take_photo()
+
+    elif "take a photo" in text:
+        from skills.camera import take_photo
+        return take_photo()
+
+    elif "camera" == text:
+        from skills.camera import take_photo
+        return take_photo()
 
     # ---------------- AI ----------------
 
